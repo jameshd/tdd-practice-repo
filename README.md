@@ -1,3 +1,1 @@
-# bowling-game
-
-```yarn && jest ```
+`yarn && jest`
