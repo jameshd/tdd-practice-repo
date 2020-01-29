@@ -5,7 +5,7 @@
   "author": "@jameshd",
   "license": "MIT",
   "scripts": {
-    "test": "jest --passWithNoTests --collect-coverage"
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "jest": "^25.1.0",
