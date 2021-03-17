@@ -1,5 +1,7 @@
+const myFunc = require(".");
+
 describe("The Tests", () => {
   it("should test something", () => {
-    expect(true).toBe(true);
+    expect(myFunc()).toBe(true);
   });
 });

@@ -1,1 +1,3 @@
-export default () => true;
+module.exports = () => {
+  return true;
+};
