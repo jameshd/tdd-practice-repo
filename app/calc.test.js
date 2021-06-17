@@ -3,7 +3,7 @@ const calc = require("./calc");
 describe("The Tests", () => {
   it("should reject no arguments", () => {
     expect(() => {
-      calc(null);
+      calc(undefined);
     }).toThrow();
   });
 
@@ -19,39 +19,21 @@ describe("The Tests", () => {
     }).toThrow();
   });
 
-  it("should return a zero on a 0 roll", () => {
-    expect(calc([2, 3, 4, 4, 6])).toEqual(0);
-  });
-
-  it("should return 50 points when 5 is present in the set", () => {
-    expect(calc([2, 3, 4, 5, 6])).toEqual(50);
-  });
-
-  it("should return 100 points when 1 is present in the set", () => {
-    expect(calc([1, 3, 4, 4, 6])).toEqual(100);
-  });
-
-  it("should return 150 when there is a 1 and a 5", () => {
-    expect(calc([1, 5, 2, 2, 3])).toEqual(150);
-  });
-
-  it("should return 150 when there is a 1 and a 5 not consecutive", () => {
-    expect(calc([1, 2, 5, 2, 3])).toEqual(150);
-  });
-
-  it("should return 1000 when there is a set of three 1s", () => {
-    expect(calc([1, 1, 4, 1, 3])).toEqual(1000);
-  });
-
-  it("should yield 1200 with 5 ones", () => {
-    expect(calc([1, 1, 1, 1, 1])).toEqual(1200);
-  });
-
-  it("should return number times 100 if a number appears 3 times", () => {
-    expect(calc([2, 2, 2, 3, 4])).toEqual(200);
-    expect(calc([2, 2, 3, 3, 3])).toEqual(300);
-    expect(calc([2, 4, 2, 4, 4])).toEqual(400);
-    expect(calc([2, 4, 5, 5, 5])).toEqual(500);
-    expect(calc([2, 4, 6, 6, 6])).toEqual(600);
+  it.each([
+    [0, [6, 2, 4, 2, 3]],
+    [50, [5, 2, 4, 2, 3]],
+    [100, [1, 2, 4, 2, 3]],
+    [150, [1, 2, 5, 2, 3]],
+    [200, [2, 2, 2, 3, 4]],
+    [300, [2, 2, 3, 3, 3]],
+    [400, [2, 4, 2, 4, 4]],
+    [500, [2, 4, 5, 5, 5]],
+    [600, [2, 4, 6, 6, 6]],
+    [1000, [2, 4, 1, 1, 1]],
+    [1100, [1, 4, 1, 1, 1]],
+    [1150, [1, 5, 1, 1, 1]],
+    [1200, [1, 1, 1, 1, 1]],
+  ])("expected: %d from set %s", (expected, input) => {
+    expect(calc(input)).toEqual(expected);
   });
 });
