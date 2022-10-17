@@ -1,4 +1,4 @@
-const myFunc = require(".");
+import myFunc from ".";
 
 describe("The Tests", () => {
   it("should test something", () => {
