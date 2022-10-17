@@ -1,1 +1,6 @@
-`yarn && jest`
+# TDD Practice
+
+```
+npm install
+npm test
+```
